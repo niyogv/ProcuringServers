@@ -10,11 +10,11 @@ terraform {
 variable "hcloud_token" {}
 
 provider "hcloud" {
-  token = var.hcloud_token
+  token = var.hcloud_token  ## this is to talk to the cloud providers using the api generated on hetzener
 }
 
 variable "server_count" {
-  default = 7
+  default = 7                   ## here it procures 7 servers
 }
 
 resource "hcloud_server" "sephorum" {
@@ -26,10 +26,10 @@ resource "hcloud_server" "sephorum" {
 }
 
 labels = {
-  environment = "qa"
-  app         = "sephorum"
+  environment = "qa/prod/staging"
+  app         = ""  ## add the app name
 }
 
 ssh_keys = [
-  "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPlvyCBfJT4BEr1/SwJBcveH67LMWJZQA+H+xM7b2+2/"
+  ""  ## add ur ssh keys to the servers
 ]
